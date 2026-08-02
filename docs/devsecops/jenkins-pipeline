@@ -1,0 +1,105 @@
+pipeline {
+    agent any
+    
+    tools {
+        nodejs 'nodejs20'
+    }
+    
+    environment {
+        SCANNER_HOME = tool 'sonar-scanner'
+    }
+
+    stages {
+        stage('1.git checkout') {
+            steps {
+                git branch: 'Majidullask04-patch-1', url: 'https://github.com/Majidullask04/microservices-demo.git'
+            }
+        }
+        
+        stage('Discover Repository') {
+             steps {
+        sh '''
+        find . -name "package.json"
+        find . -name "pom.xml"
+        find . -name "build.gradle"
+        find . -name "go.mod"
+        find . -name "*.csproj"
+        find . -name "requirements.txt"
+        find . -name "Dockerfile"
+        find . -name "docker-compose.yml"
+        '''
+          }
+      }
+
+     stage('gitleaks') {
+            steps {
+                sh 'gitleaks detect source . || true '
+           }
+        }
+        
+        stage('sonar-scanner') {
+            steps {
+                withSonarQubeEnv('sonar') {
+                    sh '''
+                    $SCANNER_HOME/bin/sonar-scanner \
+                    -Dsonar.projectName=microservice-cloude-demo \
+                    -Dsonar.projectKey=microservice-cloude-demo \
+                    -Dsonar.exclusions=**/*.java
+                    '''
+              }
+           }
+        }
+        
+        stage('6.Quality Gate') {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: false
+                }
+            }
+        }
+
+        stage('7.Trivy FS Scan') {
+            steps {
+                sh 'trivy fs --severity HIGH,CRITICAL .'
+            }
+        }
+        
+        
+        stage('7.build & push docker ') {
+            steps {
+                script{
+                    withDockerRegistry(credentialsId: 'docker-id') {
+                    sh '''
+                    find src -name Dockerfile | while read dockerfile
+                 do
+                      service=$(echo "$dockerfile" | cut -d'/' -f2)
+
+                      echo "Building $service from $dockerfile"
+
+                       if docker build \
+                        -t majid04/$service:micro-service \
+                        -f "$dockerfile" \
+                     $(dirname "$dockerfile")
+                then
+                       echo "Build successful: $service"
+
+                        docker push majid04/$service:micro-service
+              else
+                        echo "Build failed: $service"
+                       continue
+                    fi
+                 done
+                    '''
+                   }
+                }
+            }
+        }
+        
+        stage('Deploy to k3s') {
+            steps {
+                sh 'kubectl apply -n microservices -k kubernetes-manifests'
+           }
+        }
+        
+    }
+}

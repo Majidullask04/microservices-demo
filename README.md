@@ -8,6 +8,9 @@ web-based e-commerce app where users can browse items, add them to the cart, and
 
 Google uses this application to demonstrate how developers can modernize enterprise applications using Google Cloud products, including: [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine), [Cloud Service Mesh (CSM)](https://cloud.google.com/service-mesh), [gRPC](https://grpc.io/), [Cloud Operations](https://cloud.google.com/products/operations), [Spanner](https://cloud.google.com/spanner), [Memorystore](https://cloud.google.com/memorystore), [AlloyDB](https://cloud.google.com/alloydb), and [Gemini](https://ai.google.dev/). This application works on any Kubernetes cluster.
 
+> 📘 **DevSecOps & GitOps Platform**: Detailed documentation covering Jenkins CI/CD, SonarQube, Gitleaks, Trivy, K3s, ArgoCD, Prometheus & Grafana is available in [DevSecOps Platform Documentation](docs/devsecops/README.md).
+
+
 If you’re using this demo, please **★Star** this repository to show your interest!
 
 **Note to Googlers:** Please fill out the form at [go/microservices-demo](http://go/microservices-demo).
@@ -167,3 +170,75 @@ Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 - [Google Cloud Next'18 London – Keynote](https://youtu.be/nIq2pkNcfEI?t=3071)
   showing Stackdriver Incident Response Management
 - [Microservices demo showcasing Go Micro](https://github.com/go-micro/demo)
+
+## 📋 DevOps Engineer Profile – Majidulla SK
+
+**Name:** Majidulla SK (aka *Majidullask*)
+**Role:** Senior DevOps Engineer / Platform Engineer
+
+---
+
+## 🚀 What I Do
+
+I design, build, and operate end‑to‑end **DevSecOps** pipelines that deliver cloud‑native microservices at scale. My expertise spans the full lifecycle of modern applications, from source code to production monitoring.
+
+### Core Competencies
+
+| Area | Tools & Technologies | What I Deliver |
+|------|----------------------|----------------|
+| **Continuous Integration / Delivery** | Jenkins (Declarative), Skaffold, Docker, Docker Hub | Automated builds, unit tests, security scans, image push, and K3s/GKE deployments. |
+| **Security & Compliance** | Gitleaks, Trivy, SonarQube, OWASP, Kubernetes‑Network‑Policies | Secret detection, vulnerability scanning, static code analysis, and quality gates that block insecure changes. |
+| **Infrastructure as Code** | Terraform, Helm, Kustomize, Cloud Build, Cloud Deploy | Reproducible, version‑controlled cluster and service provisioning across GKE, K3s, Minikube, Kind, and other environments. |
+| **GitOps & Release Management** | Argo CD, Flux, GitHub Actions | Continuous, declarative sync of manifests; zero‑touch roll‑outs with automated rollback on drift detection. |
+| **Observability & Monitoring** | Prometheus, Grafana, Loki, Jaeger, OpenTelemetry | Cluster health dashboards, alerting, log aggregation, and distributed tracing for root‑cause analysis. |
+| **Service Mesh & Networking** | Istio / Cloud Service Mesh, Envoy, NGINX Ingress | Secure, resilient traffic routing, mutual TLS, traffic shaping, and canary releases. |
+| **AI‑Powered Enhancements** | Gemini API, custom shopping‑assistant component | Image‑based product recommendation, AI‑driven chatbot, and intelligent autoscaling decisions. |
+| **Container & Runtime** | Docker, Docker Compose, K3s, GKE, Cloud Run, Cloud Run for Anthos | Multi‑cloud compatible container orchestration with per‑service scaling and resource optimisation. |
+| **Scripting & Automation** | Bash, PowerShell, Python, Go, C#, .NET, Node.js | Custom build scripts, CI steps, and tooling extensions for any language stack. |
+
+---
+
+## 📚 Evidence from the Project Documentation
+
+The **microservices‑devops‑platform‑Documentation** repository contains comprehensive guides I authored and maintain:
+
+- **Jenkins CI/CD Pipeline** – detailed steps for source checkout, secret scanning (`gitleaks`), static analysis (`sonar‑scanner`), vulnerability scanning (`trivy`), Docker image build/push, and optional K3s deployment. (See `jenkins‑pipeline/` assets.)
+- **DevSecOps Workflow** – end‑to‑end security gating and quality gates with screenshots of each stage. (See `docs/devsecops/README.md`.)
+- **Monitoring Stack** – Prometheus & Grafana dashboards, Loki logs, and Jaeger tracing visualisations. (Screenshots included in the docs.)
+- **GitOps with Argo CD** – automated manifest sync, drift detection, and rollback procedures.
+- **AI Shopping Assistant** – Gemini‑powered microservice that analyses images to suggest products (`kustomize/components/shopping‑assistant`).
+- **Infrastructure as Code** – Terraform scripts for full‑stack deployment on GKE, plus Helm/Kustomize overlays for Istio, Cloud Service Mesh, and other variations.
+
+All of these artefacts are part of the repository you cloned, demonstrating my ability to **write clear, production‑grade documentation** alongside functional code.
+
+---
+
+## 🎞️ Watch Me in Action
+
+A recorded walkthrough of the pipeline, monitoring dashboards, and AI assistant is available on Loom:
+
+[▶️ DevOps Platform Demo – Loom Video](https://www.loom.com/share/880ad7fd36d24f53914d39f451a1741d)
+
+---
+
+## 📈 Why This Matters
+
+- **Speed:** Automated CI/CD reduces release cycles from weeks to minutes.
+- **Security:** Integrated scanning enforces compliance before code reaches production.
+- **Reliability:** GitOps ensures the cluster state always matches the declared configuration.
+- **Observability:** Full‑stack metrics, logs, and traces enable rapid incident response.
+- **Innovation:** AI‑driven components showcase forward‑thinking, next‑gen capabilities.
+
+---
+
+## 📌 Quick Links
+
+- [Jenkins Pipeline Docs](docs/devsecops/README.md#pipeline-stages)
+- [Terraform Deployment Guide](terraform/README.md)
+- [Istio Service Mesh Guide](kustomize/components/service-mesh-istio/README.md)
+- [AI Shopping Assistant Docs](kustomize/components/shopping-assistant/README.md)
+- [Monitoring Dashboards](docs/devsecops/README.md#screenshots)
+
+---
+
+*This profile is kept up‑to‑date as part of the project documentation repository, reflecting my current skill set and the tools I manage on a daily basis.*
